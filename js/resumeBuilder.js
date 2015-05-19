@@ -22,7 +22,7 @@ var bio = { //Object Literal Notation//
 	],
 	"picture" : "Project_1-assets/udacity-logo.jpg",
 	"display" : "to be filled"
-};
+}
 
 var education = {
 	"schools" : [
@@ -30,9 +30,13 @@ var education = {
 			"name" : "University of British Columbia",
 			"location" : "Vancouver, BC",
 			"degree" : "BA",
-			"majors" : "Economics",
-			"minors" : "Commerce",
-			"dates" : 52014,
+			"majors" : [
+				"Economics"
+			],
+			"minors" : [
+				"Commerce"
+			],
+			"dates" : 2014,
 			"url" : "to be filled"
 		}
 	],
@@ -40,24 +44,24 @@ var education = {
 		{
 			"title" : "Introduction to Python (Part I)",
 			"school" : "Rice University",
-			"date" :52015,
+			"date" : 2015,
 			"url" : "string"
 		},
 		{
 			"title" : "Introduction to Python (Part II)",
 			"school" : "Rice University",
-			"date" :52015,
+			"date" : 2015,
 			"url" : "string"	
 		},
 		{
 			"title" : "Front End Developer Nanodegree",
 			"school" : "Udacity",
-			"date" :72015,
+			"date" : 2015,
 			"url" : "string"
 		}
 	],
 	"display" : "to be filled"
-};
+}
 
 var work = {
 	"jobs" : [
@@ -84,7 +88,7 @@ var work = {
 		}
 	],
 	"display" : "to be filled"
-};
+}
 
 var projects = {
 	"projects" : [
@@ -101,4 +105,23 @@ var projects = {
 		}
 	],
 	"display" : "to be filled"
-};
+}
+
+if (bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	for (skill in bio.skills) {
+		var formattedSkill= HTMLskills.replace("%data%", bio.skills[skill]);
+		$("#skills").append(formattedSkill);
+	}
+}
+
+
+for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+	$(".work-entry:last").append(formattedEmployerTitle);
+}
